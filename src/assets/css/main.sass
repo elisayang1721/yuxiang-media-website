@@ -233,15 +233,22 @@ footer
       color: #fff
       padding: 40px 0
       width: 100%
+      +mb-width
+        padding: 6vmin 0
+        flex-wrap: wrap
       .logo
         flex: 1
         +mb-width(1420px)
           img
-            width: 80%     
+            width: 80%
+        +mb-width
+          flex: auto
       .footerNav
         +flex(flex-start,flex-start)
         flex: 3
-        border-left: 1px solid $wCrl   
+        border-left: 1px solid $wCrl 
+        +mb-width
+          flex: auto  
         li
           +font(22px,$wCrl,700)
           padding: 0 45px
