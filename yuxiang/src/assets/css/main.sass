@@ -5,13 +5,24 @@ body
     +size(20px,100vh)
     +setBg($mainCrl)
     content: ''
+    position: fixed
     z-index: 100
+    +mb-width
+      display: none
 header
-  border: 1px solid green
+  background: $wCrl  
   .topLogo
-    padding: 25px 0
+    +flex(center)
+    position: fixed
+    width: calc(100% - 120px)
+    height: 120px
+    +mb-width
+      width: calc(100% - 18vmin)
+      height: 20vmin
+    +mb-width(600px)
+      img
+        width: 80%
   .subMenuBar    
-    // +size(120px,100vh)
     +setBg($secondCrl)
     position: fixed
     top: 0
@@ -20,6 +31,14 @@ header
     width: 100px
     height: 100vh
     transition: width .5s
+    +mb-width
+      top: 20vmin
+      left: -100%
+      right: auto
+      width: 100%
+      height: calc(100% - 20vmin)
+      transition: .3s
+      overflow-y: auto
     &.open
       width: 215px
       .subLogo
@@ -29,6 +48,8 @@ header
         transform: translateX(0)
         .svg-icon
           transform: rotate(270deg)
+      .l-header
+        width: 150px
     .subLogo
       +absPos(50%,50px)
       +size(65px,52px)
@@ -39,6 +60,8 @@ header
         +absPos
         content: ''
         +setImgBg('logo_white.png',165px,52px,100%,top left)
+      +mb-width
+        display: none
     .navCollapse
       +absPos(50%,140px)
       transform: translateX(-50%)
@@ -48,45 +71,199 @@ header
         fill: $wCrl
         transform: rotate(90deg)
         transition: .5s
-    .menu
-      +absPos(50%,70px,left,bottom)
-      border: 1px solid green
-      transform: translateX(-50%)
-      .svg-icon
-        +size(1.5em)
-        fill: #656565
-      li
-        &+li
-          margin-top: 30px
-        span
-          +font(20px,#656565)
-          display: none
+      +mb-width
+        display: none
+    .l-header
+      +absPos(35px,70px,left,bottom)
+      width: 35px
+      z-index: 400
+      overflow: hidden
+      transition: width .5s
+      +mb-width
+        top: 0
+        left: 0
+        bottom: auto
+        width: 100%    
+      .menu
+        position: relative 
+        width: 140px        
+        &::before
+          content: ''
+          +absPos(42px)
+          +size(1px,100%)
+          background: $mainCrl
+        +mb-width
+          width: 100%
+          &::before
+            display: none
+        li
+          +flex
+          position: relative
+          cursor: pointer
+          +mb-width
+            justify-content: flex-start
+            padding: 5vmin
+            border-bottom: 1px solid #656565
+          a
+            +flex
+            width: 100%
+            text-decoration: none
+            +mb-width
+              justify-content: flex-start 
+          &+li
+            margin-top: 30px
+            +mb-width
+              margin-top: 0
+          .icon
+            width: 30px
+            text-align: center
+            +mb-width
+              width: 7vmin 
+          &:nth-child(1)
+            .svg-icon
+              +size(18px,30px)
+          &:nth-child(2)
+            .svg-icon
+              +size(24px)
+          &:nth-child(3)
+            .svg-icon
+              +size(30px,24px)
+          &:nth-child(4)
+            .svg-icon
+              +size(24px)
+          &:nth-child(5)
+            .svg-icon
+              +size(27px,24px)
+          .svg-icon
+            fill: #656565
+            transition: .3s
+            +mb-width
+              width: 1.5em !important
+              height: 1.5em !important
+              fill: #939393
+          span
+            +font(20px,#656565)
+            white-space: nowrap
+            transition: .3s
+            +mb-width
+              font-size: 4.5vmin
+              color: #939393
+              margin-left: 2.5vmin
+          +pc-width
+            &:hover
+              .svg-icon
+                fill: #fff
+              span
+                color: #fff
 
+/* 漢堡選單 */
++mb-width
+  .hamburger-box
+    +absPos(0,0,right)
+    position: fixed
+    background: $secondCrl
+    +size(18vmin,20vmin)
+  .hamburger-btn
+    +absPos(50%,50%)
+    +size(8vmin,6vmin)
+    transform: translate(-50%,-50%)
+  .hamburger-inner
+    +size(100%,1.04vmin)
+    position: absolute
+    border-radius: 5px
+    background: $mainCrl
+    transition-timing-function: ease
+    transition-duration: .15s
+    transition-property: transform
+    &::after,&::before
+      +size(100%,1.04vmin)
+      content: ''
+      position: absolute
+      display: block
+      border-radius: 5px
+      background: $mainCrl
+      transition-timing-function: ease
+      transition-duration: .15s
+      transition-property: transform
+    &::before
+      top: 2.4vmin
+      transition: top .1s cubic-bezier(.33333,.66667,.66667,1) .2s, transform .13s cubic-bezier(.55,.055,.675,.19)
+    &::after
+      top: 4.8vmin
+      transition: top .2s cubic-bezier(.33333,.66667,.66667,1) .2s, transform .13s cubic-bezier(.55,.055,.675,.19)
++mb-width
+  .isOpen
+    .hamburger-box
+      .hamburger-inner
+        transition-delay: 0.22s
+        background-color: transparent
+        &::before
+          top: 0.85vmin
+          transition: top .1s cubic-bezier(.33333,0,.66667,.33333) .15s,transform .13s cubic-bezier(.215,.61,.355,1) .22s 
+          transform: translate3d(0,10px,0) rotate(45deg)
+        &::after
+          top: 0.85vmin
+          transition: top .2s cubic-bezier(.33333,0,.66667,.33333),transform .13s cubic-bezier(.215,.61,.355,1) .22s
+          transform: translate3d(0,10px,0) rotate(-45deg)		
+    .subMenuBar
+      left: 0
+
+      
+.content-wrap
+  padding-top: 120px
+  height: 800px
+
+/* Footer */
 footer
   background: $secondCrl
   .wrap
-    width: 1700px
-    margin: 0 auto    
+    width: 1660px
+    margin: 0 auto
+    +mb-width(1700px)
+      width: 100%
+      padding-left: 50px
+      padding-right: 120px
+    +mb-width(1220px)
+      padding-left: 0
+    +mb-width
+      padding: 0
     .sitemap
       +flex(flex-start)
+      display: inline-flex
       color: #fff
       padding: 40px 0
+      width: 100%
       .logo
-        padding: 20px 70px
-        border-right: 1px solid $wCrl
+        flex: 1
+        +mb-width(1420px)
+          img
+            width: 80%     
       .footerNav
-        +flex(flex-start,flex-start)        
+        +flex(flex-start,flex-start)
+        flex: 3
+        border-left: 1px solid $wCrl   
         li
           +font(22px,$wCrl,700)
           padding: 0 45px
+          +mb-width(1420px)
+            font-size: 20px
+            padding: 0 2.82vw
+          +mb-width(1200px)
+            padding: 0 2.2vw
         .subMenu
           margin-top: 25px
           a
             +font(16px,$wCrl)
             text-decoration: none
             margin-bottom: 18px
+            +mb-width(1420px)
+              font-size: 14px
+              margin-bottom: 15px
     .copyright
       +font(18px,$wCrl,700)
       text-align: center
       padding: 35px 0
       border-top: 1px solid $wCrl
+      +mb-width
+        font-size: 2.4vmin
+        padding: 6vmin 0

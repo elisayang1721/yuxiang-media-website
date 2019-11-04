@@ -1,21 +1,27 @@
 <template lang="pug">
-  header
+  header(:class="{'isOpen':isMbNavOpen}")
     .topLogo
       router-link(to="/")
         img(src="@img/logo.png")
-    .subMenuBar(:class="{'open':isNavOpen}")
+    .hamburger-box
+      .hamburger-btn(@click="navToggle('mb')")
+        .hamburger-inner
+    .subMenuBar(:class="{'open':isPcNavOpen}")
       .subLogo
-      .navCollapse(@click="navToggle")
+      .navCollapse(@click="navToggle('pc')")
         svg-icon(icon-class="collapse")
-      ul.menu
-        li(v-for="(nav,index) in navs" :key="index")
-          template(v-if="nav.link")
-            router-link(:to="nav.link")
-              svg-icon(:icon-class="nav.icon")
+      .l-header
+        ul.menu
+          li(v-for="(nav,index) in navs" :key="index")
+            template(v-if="nav.link")
+              router-link(:to="nav.link")
+                i.icon
+                  svg-icon(:icon-class="nav.icon")
+                span {{nav.title}}
+            template(v-else)
+              i.icon
+                svg-icon(:icon-class="nav.icon")
               span {{nav.title}}
-          template(v-else)
-            svg-icon(:icon-class="nav.icon")
-            span {{nav.title}}
 </template>
 
 <script>
@@ -24,7 +30,8 @@ export default {
   name: 'Header',
   data() {
     return {
-      isNavOpen: false,
+      isPcNavOpen: false,
+      isMbNavOpen: false,
       navs: [
         {
           title: '關於公司',
@@ -51,8 +58,15 @@ export default {
     }
   },
   methods: {
-    navToggle() {
-      this.isNavOpen = !this.isNavOpen
+    navToggle(dec) {
+      switch(dec) {
+        case 'mb':
+          this.isMbNavOpen = !this.isMbNavOpen
+          break;
+        case 'pc':
+          this.isPcNavOpen = !this.isPcNavOpen
+          break;
+      }    
     }
   }
 }
