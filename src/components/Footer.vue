@@ -5,19 +5,22 @@
         .logo
           img(src="@img/logo_white.png")
         ul.footerNav
-          li(v-for="(nav,index) in navs" :key="index")
-            | {{nav.title}}
-
+          template(v-for="(nav,index) in navs")
             template(v-if="nav.children")
-              .subMenu
-                template(v-for="(sub,index) in nav.children")
-                  template(v-if="sub.href")
-                    a(
-                      :href="sub.href"
-                      target="blank"
-                    ) {{sub.subtitle}} 
-                  template(v-if="sub.link")
-                    router-link(:to="sub.link") {{sub.subtitle}}
+              li.hassub
+                | {{nav.title}}
+                .subMenu
+                  template(v-for="(sub,index) in nav.children")
+                    template(v-if="sub.href")
+                      a(
+                        :href="sub.href"
+                        target="blank"
+                      ) {{sub.subtitle}} 
+                    template(v-if="sub.link")
+                      router-link(:to="sub.link") {{sub.subtitle}}
+            template(v-else)
+              li
+                | {{nav.title}}
 
       .copyright © 2019 Brilliant All Right Reserved
 </template>
