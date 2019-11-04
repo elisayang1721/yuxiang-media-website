@@ -1,0 +1,92 @@
+body
+  position: relative
+  &::before
+    +absPos(0,0,right)
+    +size(20px,100vh)
+    +setBg($mainCrl)
+    content: ''
+    z-index: 100
+header
+  border: 1px solid green
+  .topLogo
+    padding: 25px 0
+  .subMenuBar    
+    // +size(120px,100vh)
+    +setBg($secondCrl)
+    position: fixed
+    top: 0
+    right: 20px
+    z-index: 99
+    width: 100px
+    height: 100vh
+    transition: width .5s
+    &.open
+      width: 215px
+      .subLogo
+        width: 165px
+      .navCollapse
+        left: 35px
+        transform: translateX(0)
+        .svg-icon
+          transform: rotate(270deg)
+    .subLogo
+      +absPos(50%,50px)
+      +size(65px,52px)
+      transform: translateX(-50%)
+      overflow: hidden
+      transition: width .5s
+      &::before
+        +absPos
+        content: ''
+        +setImgBg('logo_white.png',165px,52px,100%,top left)
+    .navCollapse
+      +absPos(50%,140px)
+      transform: translateX(-50%)
+      cursor: pointer
+      .svg-icon
+        +size(1.5em)
+        fill: $wCrl
+        transform: rotate(90deg)
+        transition: .5s
+    .menu
+      +absPos(50%,70px,left,bottom)
+      border: 1px solid green
+      transform: translateX(-50%)
+      .svg-icon
+        +size(1.5em)
+        fill: #656565
+      li
+        &+li
+          margin-top: 30px
+        span
+          +font(20px,#656565)
+          display: none
+
+footer
+  background: $secondCrl
+  .wrap
+    width: 1700px
+    margin: 0 auto    
+    .sitemap
+      +flex(flex-start)
+      color: #fff
+      padding: 40px 0
+      .logo
+        padding: 20px 70px
+        border-right: 1px solid $wCrl
+      .footerNav
+        +flex(flex-start,flex-start)        
+        li
+          +font(22px,$wCrl,700)
+          padding: 0 45px
+        .subMenu
+          margin-top: 25px
+          a
+            +font(16px,$wCrl)
+            text-decoration: none
+            margin-bottom: 18px
+    .copyright
+      +font(18px,$wCrl,700)
+      text-align: center
+      padding: 35px 0
+      border-top: 1px solid $wCrl

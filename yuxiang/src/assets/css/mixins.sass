@@ -1,0 +1,45 @@
+//========== variable ==========
+$wCrl: #fff
+$bCrl: #000
+$mainCrl: #ff3c00
+$secondCrl: #121212
+
+
+//========== mixin ==========
+=absPos($hrz:0, $vrt:0, $hAlign:left, $vAlign:top)
+  position: absolute	
+  @if $hAlign == right
+    right: $hrz
+  @else
+    left: $hrz
+  @if $vAlign == bottom
+    bottom: $vrt
+  @else
+    top: $vrt
+
+=setImgBg($file, $w:null, $h:null, $size:initial, $post:top center, $repeat:no-repeat, $color:null)
+  background-image: url(../img/#{$file})
+  background-repeat: $repeat
+  background-size: $size
+  background-position: $post
+  @if($color)
+    +setBg($color)
+  @if($w and $h)
+    +size($w, $h)
+    
+=setBg($color)
+  background-color: $color
+
+=size($w, $h:$w)
+  width: $w
+  height: $h
+
+=flex($hrz:space-between, $vrt:center)
+  display: flex
+  justify-content: $hrz
+  align-items: $vrt
+
+=font($size, $color, $weight: 500)
+  font-size: $size
+  color: $color
+  font-weight: $weight
