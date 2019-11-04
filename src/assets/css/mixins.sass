@@ -5,6 +5,9 @@ $mainCrl: #ff3c00
 $secondCrl: #121212
 
 
+$phone-media: 996px
+$pc-media: 997px
+
 //========== mixin ==========
 =absPos($hrz:0, $vrt:0, $hAlign:left, $vAlign:top)
   position: absolute	
@@ -43,3 +46,11 @@ $secondCrl: #121212
   font-size: $size
   color: $color
   font-weight: $weight
+
+=mb-width($phone-media: 996px)
+  @media (max-width: $phone-media)
+    @content
+
+=pc-width()
+  @media (min-width: $pc-media)
+    @content

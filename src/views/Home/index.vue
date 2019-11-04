@@ -1,5 +1,5 @@
 <template lang="pug">
-  div home
+  .content-wrap home
 </template>
 
 <script>
