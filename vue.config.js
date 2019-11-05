@@ -38,7 +38,7 @@ module.exports = {
         '@v': '@/views',
         '@img': '@/assets/img',
         '@css': '@/assets/css',
-        '@icon': '@/assets/icon',
+        '@data': '@/assets/data',
         '@svg': '@/assets/svg'
       }
     }

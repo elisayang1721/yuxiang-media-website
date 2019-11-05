@@ -10,12 +10,15 @@ body
     +mb-width
       display: none
 header
+  position: fixed
   background: $wCrl  
+  width: 100%
+  z-index: 99
   .topLogo
     +flex(center)
-    position: fixed
     width: calc(100% - 120px)
     height: 120px
+    background: $wCrl
     +mb-width
       width: calc(100% - 18vmin)
       height: 20vmin
@@ -211,8 +214,8 @@ header
       
 .content-wrap
   padding-top: 120px
-  height: 800px
-
+  +mb-width
+    padding-top: 20vmin
 /* Footer */
 footer
   background: $secondCrl
@@ -243,34 +246,63 @@ footer
             width: 80%
         +mb-width
           flex: auto
+          img
+            +size(52.2vmin,14vmin)
       .footerNav
         +flex(flex-start,flex-start)
         flex: 3
         border-left: 1px solid $wCrl 
         +mb-width
-          flex: auto  
+          flex: auto
+          display: inline-flex
+          flex-wrap: wrap
+          margin-top: 6vmin
+          border: none
         li
           +font(22px,$wCrl,700)
+          position: relative
           padding: 0 45px
+          cursor: pointer
+          transition: .3s
           +mb-width(1420px)
             font-size: 20px
             padding: 0 2.82vw
           +mb-width(1200px)
             padding: 0 2.2vw
+          +mb-width
+            width: 100%
+            font-size: 4.5vmin
+            padding: 5vmin
+            &.hassub
+              +flex(space-between, flex-start)
+              .subMenu
+                margin-top: 0
+            &+li
+              border-top: 1px solid #303030
+          +pc-width
+            &:hover
+              color: $mainCrl
         .subMenu
           margin-top: 25px
           a
             +font(16px,$wCrl)
             text-decoration: none
             margin-bottom: 18px
+            transition: .3s
             +mb-width(1420px)
               font-size: 14px
               margin-bottom: 15px
+            +mb-width
+              font-size: 3.4vmin
+              margin-bottom: 4vmin
+            +pc-width
+              &:hover
+                color: $mainCrl
     .copyright
       +font(18px,$wCrl,700)
       text-align: center
       padding: 35px 0
       border-top: 1px solid $wCrl
       +mb-width
-        font-size: 2.4vmin
+        font-size: 2.75vmin
         padding: 6vmin 0
