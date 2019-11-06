@@ -1,6 +1,4 @@
 //========== variable ==========
-$wCrl: #fff
-$bCrl: #000
 $mainCrl: #ff3c00
 $secondCrl: #121212
 
@@ -21,7 +19,7 @@ $pc-media: 997px
     top: $vrt
 
 =setImgBg($file, $w:null, $h:null, $size:initial, $post:top center, $repeat:no-repeat, $color:null)
-  background-image: url(../img/#{$file})
+  background-image: url($file)
   background-repeat: $repeat
   background-size: $size
   background-position: $post

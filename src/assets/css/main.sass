@@ -11,14 +11,14 @@ body
       display: none
 header
   position: fixed
-  background: $wCrl  
+  background: #fff  
   width: 100%
   z-index: 99
   .topLogo
     +flex(center)
     width: calc(100% - 120px)
     height: 120px
-    background: $wCrl
+    background: #fff
     +mb-width
       width: calc(100% - 18vmin)
       height: 20vmin
@@ -62,7 +62,7 @@ header
       &::before
         +absPos
         content: ''
-        +setImgBg('logo_white.png',165px,52px,100%,top left)
+        +setImgBg('../img/logo_white.png',165px,52px,100%,top left)
       +mb-width
         display: none
     .navCollapse
@@ -71,7 +71,7 @@ header
       cursor: pointer
       .svg-icon
         +size(1.5em)
-        fill: $wCrl
+        fill: #fff
         transform: rotate(90deg)
         transition: .5s
       +mb-width
@@ -87,7 +87,7 @@ header
         left: 0
         bottom: auto
         width: 100%    
-      .menu
+      .sideMenu
         position: relative 
         width: 140px        
         &::before
@@ -153,11 +153,13 @@ header
               color: #939393
               margin-left: 2.5vmin
           +pc-width
-            &:hover
+            &:hover, &.enable
               .svg-icon
                 fill: #fff
               span
                 color: #fff
+  &.scrollDown
+    box-shadow: 0 0 15px rgba(0,0,0,.2)
 
 /* 漢堡選單 */
 +mb-width
@@ -251,7 +253,7 @@ footer
       .footerNav
         +flex(flex-start,flex-start)
         flex: 3
-        border-left: 1px solid $wCrl 
+        border-left: 1px solid #fff 
         +mb-width
           flex: auto
           display: inline-flex
@@ -259,7 +261,7 @@ footer
           margin-top: 6vmin
           border: none
         li
-          +font(22px,$wCrl,700)
+          +font(22px,#fff,700)
           position: relative
           padding: 0 45px
           cursor: pointer
@@ -285,7 +287,7 @@ footer
         .subMenu
           margin-top: 25px
           a
-            +font(16px,$wCrl)
+            +font(16px,#fff)
             text-decoration: none
             margin-bottom: 18px
             transition: .3s
@@ -299,10 +301,10 @@ footer
               &:hover
                 color: $mainCrl
     .copyright
-      +font(18px,$wCrl,700)
+      +font(18px,#fff,700)
       text-align: center
       padding: 35px 0
-      border-top: 1px solid $wCrl
+      border-top: 1px solid #fff
       +mb-width
         font-size: 2.75vmin
         padding: 6vmin 0

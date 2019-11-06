@@ -15,7 +15,7 @@
                       a(
                         :href="sub.href"
                         target="blank"
-                      ) {{sub.subtitle}} 
+                      ) {{sub.subtitle}}
                     template(v-if="sub.link")
                       router-link(:to="sub.link") {{sub.subtitle}}
             template(v-else)
@@ -49,7 +49,7 @@ export default {
             {
               subtitle: '人才專區 (104)',
               href: 'https://www.google.com.tw/'
-            },{
+            }, {
               subtitle: '公司電話、信箱',
               link: 'contact'
             }
