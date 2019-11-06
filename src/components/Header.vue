@@ -12,7 +12,7 @@
         svg-icon(icon-class="collapse")
       .l-header
         ul.sideMenu
-          li(v-for="(nav,index) in navs" :key="index" @click="goBlocks(nav.id)")
+          li(v-for="(nav,index) in navs" :key="index" @click="goBlocks(nav.id);navToggle('mb')")
             template(v-if="nav.link")
               router-link(:to="nav.link")
                 i.icon

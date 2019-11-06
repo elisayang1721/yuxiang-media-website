@@ -19,12 +19,13 @@ header
     width: calc(100% - 120px)
     height: 120px
     background: #fff
+    img
+      +size(250px,70px)
     +mb-width
       width: calc(100% - 18vmin)
       height: 20vmin
-    +mb-width(600px)
       img
-        width: 80%
+        +size(40.2vmin,11.05vmin)
   .subMenuBar    
     +setBg($secondCrl)
     position: fixed
@@ -45,7 +46,7 @@ header
     &.open
       width: 215px
       .subLogo
-        width: 165px
+        width: 172px
       .navCollapse
         left: 35px
         transform: translateX(0)
@@ -62,7 +63,7 @@ header
       &::before
         +absPos
         content: ''
-        +setImgBg('../img/logo_white.png',165px,52px,100%,top left)
+        +setImgBg('../img/logo_white.png',172px,52px,100%,top left)
       +mb-width
         display: none
     .navCollapse
@@ -243,8 +244,9 @@ footer
         flex-wrap: wrap
       .logo
         flex: 1
-        +mb-width(1420px)
-          img
+        img
+          +size(265px,75px)
+          +mb-width(1420px)
             width: 80%
         +mb-width
           flex: auto

@@ -1,20 +1,36 @@
 <template lang="pug">
   .content-wrap
     section.ixdBnner(ref="company")
-      carousel(
-        :perPage="1"
-        :mouse-drag="false"
-        :paginationEnabled="true"
-        :paginationActiveColor="'#ff3c00'"
-        :paginationColor="'#000'"
-        :paginationSize="15"
-        :loop="true"
-        :autoplay="true"
-        :speed="1000"
-        :autoplayTimeout="30000")
-        slide(v-for="(imgs,index) in idxBanners" :key="index")
-          li
-            img(:src='require(`@img/banner/${imgs.bigImg}`)')
+      ul.pc
+        carousel(
+          ref="carousel"
+          :perPage="1"
+          :mouse-drag="false"
+          :paginationEnabled="true"
+          :paginationActiveColor="'#ff3c00'"
+          :paginationColor="'#000'"
+          :paginationSize="15"
+          :loop="true"
+          :autoplay="true"
+          :speed="1000"
+          :autoplayTimeout="5000")
+          slide(v-for="(imgs,index) in idxBanners" :key="index")
+            li
+              img(:src='require(`@img/banner/${imgs.pcImg}`)' @load="getScrollTop")
+      ul.mb
+        carousel(
+          :perPage="1"
+          :mouse-drag="false"
+          :paginationEnabled="true"
+          :paginationActiveColor="'#ff3c00'"
+          :paginationColor="'#000'"
+          :loop="true"
+          :autoplay="true"
+          :speed="1000"
+          :autoplayTimeout="5000")
+          slide(v-for="(imgs,index) in idxBanners" :key="index")
+            li
+              img(:src='require(`@img/banner/${imgs.mbImg}`)')
     section.about-wrap(ref="about")
       .themeTitle
         .heading 認識昱翔
@@ -82,7 +98,8 @@ export default {
   name: 'Home',
   data() {
     return {
-      idxBanners: idxBanner
+      idxBanners: idxBanner,
+      vueCarousel: null
     }
   },
   components: {
@@ -98,6 +115,14 @@ export default {
       const menu = document.getElementsByClassName('sideMenu')
       const menuLi = menu[0].getElementsByTagName('li')
 
+      // console.log(this.$refs.about.offsetTop)
+      // setTimeout(() => {
+      //   const vueC = document.getElementsByClassName('VueCarousel')
+      //   console.log(vueC[0].clientHeight)
+      // }, 500)
+      // console.log(blocks[1].offsetTop)
+      // // console.log(headerHeight)
+
       for (let i = 0; i < blocks.length; i++) {
         const tops = blocks[i].offsetTop - headerHeight
         const blocksHeight = blocks[i].offsetHeight
@@ -105,6 +130,22 @@ export default {
         menuLi[i].classList.remove('enable')
         if (scrollTop >= tops && scrollTop < (tops + blocksHeight)) {
           menuLi[i].classList.add('enable')
+
+          // 進入-- 認識昱翔
+          if (i === 1) {
+            const moveIn = document.getElementsByClassName('article')
+            moveIn[0].classList.add('moveIn')
+          }
+
+          // 進入-- 服務項目
+          if (i === 2) {
+            const item = document.getElementsByClassName('serviceItem-list')
+            const itemLi = item[0].getElementsByTagName('li')
+
+            for (let j = 0; j < itemLi.length; j++) {
+              itemLi[j].classList.add('is-visible')
+            }
+          }
         }
       }
     },
@@ -121,8 +162,16 @@ export default {
     this.$bus.$on('getBlocks', data => {
       this.goToBlock(data.tag)
     })
+
+    // 確定所有資源載完
+    // document.onreadystatechange = () => {
+    //   if (document.readyState === 'complete') {
+    //     this.getScrollTop()
+    //   }
+    // }
   },
   beforeDestroy() {
+    window.addEventListener('scroll', this.getScrollTop)
     this.$bus.$off('getBlocks')
   }
 }
