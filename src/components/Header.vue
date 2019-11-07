@@ -12,13 +12,11 @@
         svg-icon(icon-class="collapse")
       .l-header
         ul.sideMenu
-          li(v-for="(nav,index) in navs" :key="index" @click="goBlocks(nav.id);navToggle('mb')")
-            template(v-if="nav.link")
-              router-link(:to="nav.link")
-                i.icon
-                  svg-icon(:icon-class="nav.icon")
-                span {{nav.title}}
-            template(v-else)
+          li(v-for="(nav,index) in navs"
+            :key="index"
+            :class="{enable:index === menuNowIndex}"
+            @click="goBlocks(nav.id,index);navToggle('mb')")
+            router-link(:to="nav.link")
               i.icon
                 svg-icon(:icon-class="nav.icon")
               span {{nav.title}}
@@ -31,27 +29,31 @@ export default {
     return {
       isPcNavOpen: false,
       isMbNavOpen: false,
-      selectTag: 'company',
+      menuNowIndex: Number,
       navs: [
         {
           title: '關於公司',
           icon: 'company',
-          id: 'company'
+          id: 'company',
+          link: '/'
         },
         {
           title: '認識昱翔',
           icon: 'about',
-          id: 'about'
+          id: 'about',
+          link: '/'
         },
         {
           title: '服務項目',
           icon: 'service',
-          id: 'service'
+          id: 'service',
+          link: '/'
         },
         {
           title: '活動市集',
           icon: 'activity',
-          id: 'activity'
+          id: 'activity',
+          link: '/'
         },
         {
           title: '聯絡我們',
@@ -85,7 +87,8 @@ export default {
         header.classList.remove('scrollDown')
       }
     },
-    goBlocks(tag) {
+    goBlocks(tag, index) {
+      this.menuNowIndex = index
       this.$bus.$emit('getBlocks', { tag })
     }
   },

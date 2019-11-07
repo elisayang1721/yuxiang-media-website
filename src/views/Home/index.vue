@@ -115,14 +115,6 @@ export default {
       const menu = document.getElementsByClassName('sideMenu')
       const menuLi = menu[0].getElementsByTagName('li')
 
-      // console.log(this.$refs.about.offsetTop)
-      // setTimeout(() => {
-      //   const vueC = document.getElementsByClassName('VueCarousel')
-      //   console.log(vueC[0].clientHeight)
-      // }, 500)
-      // console.log(blocks[1].offsetTop)
-      // // console.log(headerHeight)
-
       for (let i = 0; i < blocks.length; i++) {
         const tops = blocks[i].offsetTop - headerHeight
         const blocksHeight = blocks[i].offsetHeight
