@@ -1,13 +1,268 @@
 .ixdBnner
-  padding-right: 120px
-  // height: calc(100vh - 120px)
+  padding: 0 120px 0 0
+  .mb
+    display: none
   .VueCarousel-dot-container
     +absPos(195px,60px,right,bottom)
+    +mb-width
+      right: 50%
+      bottom: 2vmin
+      transform: translateX(50%)
   .VueCarousel-dot
     &:focus
       outline: none
+    +mb-width
+      +size(2.5vmin !important)
+      padding: 2vmin !important
+      margin-top: 0 !important
   +mb-width
-    padding-right: 0
-  // .VueCarousel-inner
-  //   img
-  //     height: calc(100vh - 120px)
+    padding: 0 !important
+    .pc
+      display: none
+    .mb
+      display: block
+.themeTitle
+  text-align: center
+  margin-bottom: 65px
+  +mb-width
+    margin-bottom: 5vmin
+  .heading
+    +font(77px,#000,700)
+    margin-bottom: 25px
+    +mb-width
+      font-size: 8.5vmin
+      margin-bottom: 2.5vmin
+  .subTitle
+    +font(24px,#000)
+    +mb-width
+      font-size: 4vmin
+
+section
+  position: relative
+  padding-right: 120px
+  +mb-width
+    padding: 8vmin 0 !important
+
+.about-wrap
+  padding: 100px 120px 160px 0
+  .about-content
+    position: relative
+    display: inline-block    
+    +mb-width
+      display: block 
+    .bg-sec      
+      display: inline-block
+      +mb-width(1740px)
+        img
+          width: 75.28vw
+      +mb-width
+        display: none
+    .article
+      +absPos(-12%,-10%,right,bottom)      
+      background: #000
+      padding: 40px 40px 40px 70px
+      box-shadow: 4px 10px 15px rgba(0,0,0,.45)
+      +mb-width(1740px)
+        right: -6%
+        bottom: -15%
+      +mb-width(1200px)
+        right: 0
+        padding: 40px 60px 40px 70px
+      +mb-width
+        position: relative
+        left: 50%
+        right: auto
+        bottom: 0
+        display: inline-block
+        transform: translateX(-50%)
+        padding: 6vmin
+      &::before, &::after
+        content: ''
+        background-size: cover !important
+        transform: translateY(-50%) scale(0.7)
+        transition: .3s
+        +mb-width
+          display: none
+      &::before        
+        +absPos(-90px,50%,right)
+        +size(260px,520px)
+        +setImgBg('~@img/about_decR.png')       
+        +mb-width(1740px)
+          +size(14.9vw,29.8vw)
+          right: -7vw
+      &::after
+        +absPos(-190px,55%)
+        +size(380px,520px)
+        +setImgBg('~@img/about_decL.png')
+        +mb-width(1740px)
+          +size(21.8vw,29.8vw)
+          left: -13vw
+      p
+        +font(18px,#fff)
+        line-height: 2
+        +mb-width
+          font-size: 4vmin
+      &.moveIn
+        &::before
+          right: -130px
+          transform: translateY(-50%) scale(1)
+          +mb-width(1740px)
+            right: -9vw
+        &::after
+          left: -235px
+          transform: translateY(-50%) scale(1)
+          +mb-width(1740px)
+            left: -15vw
+
+.service-wrap
+  padding: 100px 120px 70px 0
+  .service-item
+    width: 1370px
+    margin: 0 auto
+    border-bottom: 1px solid $mainCrl
+    +mb-width(1600px)
+      width: 90%
+  @extend %redDotFloat
+  .redDot
+    &.right-dot
+      right: 6%
+      top: 25%
+      transform: scale(1.5)
+      +mb-width
+        right: -2%
+        top: 10%
+    &.left-dot
+      left: 4%
+      top: 40%
+      +mb-width(1680px)
+        left: 1%
+      +mb-width(1400px)
+        left: -2%
+      +mb-width
+        top: 28%
+    &.top-dot
+      left: 10%
+      top: 25%
+      transform: scale(0.25)
+      +mb-width
+        top: 15%
+    &.bottom-dot
+      right: 27%
+      bottom: 0
+      +mb-width
+        bottom: 2%
+  .serviceItem-list
+    +flex(space-around,flex-start)
+    position: relative
+    width: 90%
+    margin: 0 auto
+    padding: 120px 0 180px
+    +mb-width(1600px)
+      width: 100%
+    +mb-width
+      display: inline-flex
+      flex-wrap: wrap
+      padding: 4vmin 0 7vmin      
+    >li
+      text-align: center
+      +mb-width
+        margin-bottom: 11.2vmin
+      .icon
+        +size(200px)
+        position: relative
+        display: inline-block
+        overflow: hidden
+        +mb-width(1450px)
+          +size(180px)
+        +mb-width(1450px)
+          +size(22vmin)
+        img
+          +absPos(0,100%)
+          transition: .25s
+      .txt
+        +font(28px,#000,700)
+        margin-top: 40px
+        +mb-width
+          font-size: 5.5vmin
+          margin-top: 4.5vmin
+      &.is-visible
+        .icon
+          img
+            top: 0
+      &:nth-child(2)
+        .icon
+          img
+            transition-delay: .15s
+      &:nth-child(3)
+        .icon
+          img
+            transition-delay: .3s
+      &:nth-child(4)
+        .icon
+          img
+            transition-delay: .45s    
+
+.market-wrap
+  +setImgBg('~@img/market_bg.jpg',null,null,cover,bottom center)
+  padding: 100px 120px 160px 0
+  +mb-width
+    text-align: center
+  .marketItem-list
+    +flex
+    position: relative
+    width: 1540px
+    margin: 0 auto
+    +mb-width(1780px)
+      width: 90%
+    +mb-width
+      display: inline-flex
+      flex-wrap: wrap
+      width: 65%
+    li
+      position: relative
+      width: 33%
+      border-radius: 5px
+      border: 3px solid #fff
+      overflow: hidden
+      +mb-width
+        width: 100%
+        border-radius: 1vmin
+        border-width: 0.75vmin
+        &+li
+          margin-top: 4vmin
+      img
+        width: 100%
+      .title
+        +absPos(25px,35px,right,bottom)
+        +font(40px,#fff,700)
+        +mb-width(1480px)
+          font-size: 34px
+          bottom: 25px
+        +mb-width
+          right: 6%
+          bottom: 10%
+          font-size: 5.5vmin
+    @extend %redDotFloat
+    .redDot
+      &.top-dot
+        left: -3%
+        top: 5%
+        transform: scale(0.6)
+        +mb-width
+          left: -20%
+          top: 30%
+      &.left-dot
+        left: -3%
+        bottom: -10%
+        +mb-width
+          bottom: auto
+          top: 10%
+      &.right-dot
+        right: -4%
+        bottom: 32%
+      &.bottom-dot
+        right: 25%
+        bottom: -13%
+        transform: scale(0.6)
+        +mb-width
+          bottom: -2%

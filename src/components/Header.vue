@@ -11,19 +11,16 @@
       .navCollapse(@click="navToggle('pc')")
         svg-icon(icon-class="collapse")
       .l-header
-        ul.menu
-          li(v-for="(nav,index) in navs" :key="index")
-            template(v-if="nav.link")
-              router-link(:to="nav.link")
-                i.icon
-                  svg-icon(:icon-class="nav.icon")
-                span {{nav.title}}
-            template(v-else)
+        ul.sideMenu
+          li(v-for="(nav,index) in navs"
+            :key="index"
+            :class="{enable:index === menuNowIndex}"
+            @click="goBlocks(nav.id,index);navToggle('mb')")
+            router-link(:to="nav.link")
               i.icon
                 svg-icon(:icon-class="nav.icon")
               span {{nav.title}}
 </template>
-
 <script>
 
 export default {
@@ -32,42 +29,91 @@ export default {
     return {
       isPcNavOpen: false,
       isMbNavOpen: false,
+      menuNowIndex: Number,
       navs: [
         {
           title: '關於公司',
-          icon: 'company'
+          icon: 'company',
+          id: 'company',
+          link: '/'
         },
         {
           title: '認識昱翔',
           icon: 'about',
+          id: 'about',
+          link: '/'
         },
         {
           title: '服務項目',
           icon: 'service',
+          id: 'service',
+          link: '/'
         },
         {
           title: '活動市集',
           icon: 'activity',
+          id: 'activity',
+          link: '/'
         },
         {
           title: '聯絡我們',
           icon: 'contact',
           link: 'contact'
-        },
+        }
       ]
     }
   },
+  watch: {
+    '$route': function () {
+      this.currentPage()
+    }
+  },
   methods: {
-    navToggle(dec) {
-      switch(dec) {
+    navToggle(cName) {
+      // eslint-disable-next-line no-empty
+      // eslint-disable-next-line default-case
+      switch (cName) {
         case 'mb':
           this.isMbNavOpen = !this.isMbNavOpen
-          break;
+          break
         case 'pc':
           this.isPcNavOpen = !this.isPcNavOpen
-          break;
-      }    
+          break
+      }
+    },
+    scrollDown() {
+      const scrollTop = document.documentElement.scrollTop
+      const header = document.querySelector('header')
+      const headerHeight = header.offsetHeight
+
+      if (scrollTop >= headerHeight) {
+        header.classList.add('scrollDown')
+      } else {
+        header.classList.remove('scrollDown')
+      }
+    },
+    goBlocks(tag, index) {
+      this.menuNowIndex = index
+      this.$bus.$emit('getBlocks', { tag })
+    },
+    currentPage() {
+      const page = this.$route.path
+      const menu = document.getElementsByClassName('sideMenu')
+      const menuLi = menu[0].getElementsByTagName('li')
+
+      if (page === '/contact') {
+        for (let i = 0; i < menuLi.length; i++) {
+          menuLi[i].classList.remove('enable')
+          menuLi[4].classList.add('enable')
+        }
+      } else {
+        menuLi[4].classList.remove('enable')
+      }
     }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.scrollDown)
+    this.currentPage()
   }
 }
 </script>

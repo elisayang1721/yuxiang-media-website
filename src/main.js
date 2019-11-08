@@ -11,6 +11,15 @@ Vue.component('svgIcon', SvgIcon)
 import '@css/reset.sass'
 import '@css/main.sass'
 
+
+// event bus
+const eventBus = {
+  install() {
+    Vue.prototype.$bus = new Vue()
+  }
+}
+Vue.use(eventBus)
+
 import App from './App'
 import router from './router'
 
@@ -18,5 +27,5 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')

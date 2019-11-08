@@ -14,7 +14,7 @@ export default {
       type: String,
       default: ''
     },
-    svgColor:{
+    svgColor: {
       type: String,
       default: '#fff'
     }
@@ -26,9 +26,8 @@ export default {
     svgClass() {
       if (this.className) {
         return 'svg-icon ' + this.className
-      } else {
-        return 'svg-icon'
       }
+      return 'svg-icon'
     }
   }
 }

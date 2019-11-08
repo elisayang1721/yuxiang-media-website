@@ -1,6 +1,4 @@
 //========== variable ==========
-$wCrl: #fff
-$bCrl: #000
 $mainCrl: #ff3c00
 $secondCrl: #121212
 
@@ -21,7 +19,7 @@ $pc-media: 997px
     top: $vrt
 
 =setImgBg($file, $w:null, $h:null, $size:initial, $post:top center, $repeat:no-repeat, $color:null)
-  background-image: url(../img/#{$file})
+  background-image: url($file)
   background-repeat: $repeat
   background-size: $size
   background-position: $post
@@ -54,3 +52,20 @@ $pc-media: 997px
 =pc-width()
   @media (min-width: $pc-media)
     @content
+
+//- extend
+%redDotFloat
+  .redDot
+    content: ''
+    position: absolute
+    +size(100px)
+    border-radius: 50%
+    background: linear-gradient(45deg, rgba(228,38,0,1) 0%,rgba(254,59,0,1) 100%)
+    background: linear-gradient(45deg, rgba(228,38,0,1) 40%,rgba(254,59,0,1) 100%)
+    box-shadow: 6px 8px 20px rgba(90, 90, 90, 0.75)
+    z-index: 10
+    +mb-width(1680px)
+      +size(5.95vw)
+    +mb-width
+      +size(8.5vmin)
+    

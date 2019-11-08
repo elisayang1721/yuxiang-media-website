@@ -5,23 +5,10 @@
         .logo
           img(src="@img/logo_white.png")
         ul.footerNav
-          template(v-for="(nav,index) in navs")
-            template(v-if="nav.children")
-              li.hassub
-                | {{nav.title}}
-                .subMenu
-                  template(v-for="(sub,index) in nav.children")
-                    template(v-if="sub.href")
-                      a(
-                        :href="sub.href"
-                        target="blank"
-                      ) {{sub.subtitle}} 
-                    template(v-if="sub.link")
-                      router-link(:to="sub.link") {{sub.subtitle}}
-            template(v-else)
-              li
-                | {{nav.title}}
-
+          li(v-for="(nav,index) in navs" :key="index"
+            @click="goBlocks(nav.id,index)")
+            router-link(:to="nav.link")
+              | {{nav.title}}
       .copyright © 2019 Brilliant All Right Reserved
 </template>
 <script>
@@ -32,30 +19,44 @@ export default {
     return {
       navs: [
         {
-          title: '關於公司'
+          title: '關於公司',
+          id: 'company',
+          link: '/'
         },
         {
-          title: '認識昱翔'
+          title: '認識昱翔',
+          id: 'about',
+          link: '/'
         },
         {
-          title: '服務項目'
+          title: '服務項目',
+          id: 'service',
+          link: '/'
         },
         {
-          title: '活動市集'
+          title: '活動市集',
+          id: 'activity',
+          link: '/'
         },
         {
           title: '聯絡我們',
+          link: 'contact',
           children: [
             {
               subtitle: '人才專區 (104)',
               href: 'https://www.google.com.tw/'
-            },{
+            }, {
               subtitle: '公司電話、信箱',
               link: 'contact'
             }
           ]
         }
       ]
+    }
+  },
+  methods: {
+    goBlocks(tag) {
+      this.$bus.$emit('getBlocks', { tag })
     }
   }
 }
