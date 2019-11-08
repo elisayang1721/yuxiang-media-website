@@ -1,7 +1,8 @@
 <template lang="pug">
   .content-wrap.contant
     section.cBanner
-      img(src="@img/contact_banner.jpg" @load="getScrollTop")
+      img(src="@img/contact_banner.jpg"
+        @load="getScrollTop")
     section.cHeading
       .cn 聯絡我們
       .en
