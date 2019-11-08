@@ -1,8 +1,9 @@
 .contant
   .cBanner
-    height: 520px
+    +setImgBg('~@img/contact_banner.jpg',100%,27vw,cover)
     +mb-width
       padding: 0 !important
+      height: 42vmin
     img
       height: auto
   .cHeading
@@ -118,8 +119,9 @@
             +mb-width
               width: 28%
               font-size: 4vmin
-          h2
+          .h2
             +font(36px,#000)
+            text-decoration: none
             +mb-width(1680px)
               font-size: 2.2vw
             +mb-width

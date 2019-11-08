@@ -1,8 +1,6 @@
 <template lang="pug">
   .content-wrap.contant
     section.cBanner
-      img(src="@img/contact_banner.jpg"
-        @load="getScrollTop")
     section.cHeading
       .cn 聯絡我們
       .en
@@ -22,10 +20,10 @@
             .cMethod
               div
                 h1 PHONE
-                h2 +886 4-2254-0759
+                a.h2(href="tel:+886 4-2254-0759") +886 4-2254-0759
               div
                 h1 EMAIL
-                h2 yuxianghr@gmail.com
+                a.h2(href="mailto:yuxianghr@gmail.com") yuxianghr@gmail.com
         li
           .heading
             .cn 人才專區
