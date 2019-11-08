@@ -13,12 +13,12 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      component: Home,
+      component: Home
     },
     {
       path: '/contact',
       name: 'contact',
-      component: Contact,
+      component: Contact
     }
   ],
   scrollBehavior(to, from, saveTop) {
@@ -26,7 +26,7 @@ const router = new VueRouter({
       return saveTop
     }
     return { x: 0, y: 0 }
-  },
+  }
 })
 
 router.beforeEach((to, from, next) => {
