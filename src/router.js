@@ -8,6 +8,7 @@ import Contact from '@v/Contact/index'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
+  mode: 'history',
   base: __dirname,
   routes: [
     {
