@@ -63,6 +63,11 @@ export default {
       ]
     }
   },
+  watch: {
+    '$route': function () {
+      this.currentPage()
+    }
+  },
   methods: {
     navToggle(cName) {
       // eslint-disable-next-line no-empty
@@ -90,10 +95,25 @@ export default {
     goBlocks(tag, index) {
       this.menuNowIndex = index
       this.$bus.$emit('getBlocks', { tag })
+    },
+    currentPage() {
+      const page = this.$route.path
+      const menu = document.getElementsByClassName('sideMenu')
+      const menuLi = menu[0].getElementsByTagName('li')
+
+      if (page === '/contact') {
+        for (let i = 0; i < menuLi.length; i++) {
+          menuLi[i].classList.remove('enable')
+          menuLi[4].classList.add('enable')
+        }
+      } else {
+        menuLi[4].classList.remove('enable')
+      }
     }
   },
   mounted() {
     window.addEventListener('scroll', this.scrollDown)
+    this.currentPage()
   }
 }
 </script>

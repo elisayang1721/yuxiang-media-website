@@ -52,6 +52,10 @@
             br
             |讓我們來幫你的天空，填滿色彩吧！
     section.service-wrap(ref="service")
+      i.redDot.right-dot
+      i.redDot.left-dot
+      i.redDot.top-dot
+      i.redDot.bottom-dot
       .themeTitle
         .heading 服務項目
         .subTitle SERVICE ITEMS
@@ -78,6 +82,10 @@
         .heading 活動市集
         .subTitle SUNDAY MARKET
       ul.marketItem-list
+        i.redDot.top-dot
+        i.redDot.left-dot
+        i.redDot.right-dot
+        i.redDot.bottom-dot
         li
           img(src="@img/market_01.jpg")
           .title 公益活動
@@ -163,7 +171,7 @@ export default {
     // }
   },
   beforeDestroy() {
-    window.addEventListener('scroll', this.getScrollTop)
+    window.removeEventListener('scroll', this.getScrollTop)
     this.$bus.$off('getBlocks')
   }
 }

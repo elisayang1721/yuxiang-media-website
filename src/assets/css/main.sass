@@ -142,8 +142,8 @@ header
             fill: #656565
             transition: .3s
             +mb-width
-              width: 1.5em !important
-              height: 1.5em !important
+              width: 4.5vmin !important
+              height: 4.5vmin !important
               fill: #939393
           span
             +font(20px,#656565)
@@ -262,27 +262,29 @@ footer
           flex-wrap: wrap
           margin-top: 6vmin
           border: none
-        li
-          +font(22px,#fff,700)
-          position: relative
-          padding: 0 45px
-          cursor: pointer
-          transition: .3s
-          +mb-width(1420px)
-            font-size: 20px
-            padding: 0 2.82vw
-          +mb-width(1200px)
-            padding: 0 2.2vw
+        li          
+          position: relative         
           +mb-width
             width: 100%
-            font-size: 4.5vmin
-            padding: 5vmin
             &.hassub
               +flex(space-between, flex-start)
               .subMenu
                 margin-top: 0
             &+li
               border-top: 1px solid #303030
+          a
+            +font(22px,#fff,700)
+            padding: 0 45px
+            transition: .3s
+            text-decoration: none
+            +mb-width(1420px)
+              font-size: 20px
+              padding: 0 2.82vw
+            +mb-width(1200px)
+              padding: 0 2.2vw
+            +mb-width
+              font-size: 4.5vmin
+              padding: 5vmin
           +pc-width
             &:hover
               color: $mainCrl

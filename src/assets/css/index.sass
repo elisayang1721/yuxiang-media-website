@@ -16,7 +16,7 @@
       padding: 2vmin !important
       margin-top: 0 !important
   +mb-width
-    padding-right: 0
+    padding: 0 !important
     .pc
       display: none
     .mb
@@ -38,11 +38,13 @@
       font-size: 4vmin
 
 section
-  // border: 1px solid red
-  padding: 100px 120px 160px 0
+  position: relative
+  padding-right: 120px
   +mb-width
-    padding: 8vmin 0
+    padding: 8vmin 0 !important
+
 .about-wrap
+  padding: 100px 120px 160px 0
   .about-content
     position: relative
     display: inline-block    
@@ -63,7 +65,6 @@ section
       +mb-width(1740px)
         right: -6%
         bottom: -15%
-        // padding: 30px 30px 30px 60px
       +mb-width(1200px)
         right: 0
         padding: 40px 60px 40px 70px
@@ -114,14 +115,45 @@ section
             left: -15vw
 
 .service-wrap
+  padding: 100px 120px 70px 0
   .service-item
     width: 1370px
     margin: 0 auto
     border-bottom: 1px solid $mainCrl
     +mb-width(1600px)
       width: 90%
+  @extend %redDotFloat
+  .redDot
+    &.right-dot
+      right: 6%
+      top: 25%
+      transform: scale(1.5)
+      +mb-width
+        right: -2%
+        top: 10%
+    &.left-dot
+      left: 4%
+      top: 40%
+      +mb-width(1680px)
+        left: 1%
+      +mb-width(1400px)
+        left: -2%
+      +mb-width
+        top: 28%
+    &.top-dot
+      left: 10%
+      top: 25%
+      transform: scale(0.25)
+      +mb-width
+        top: 15%
+    &.bottom-dot
+      right: 27%
+      bottom: 0
+      +mb-width
+        bottom: 2%
   .serviceItem-list
     +flex(space-around,flex-start)
+    position: relative
     width: 90%
     margin: 0 auto
     padding: 120px 0 180px
@@ -130,8 +162,8 @@ section
     +mb-width
       display: inline-flex
       flex-wrap: wrap
-      padding: 4vmin 0 7vmin
-    li
+      padding: 4vmin 0 7vmin      
+    >li
       text-align: center
       +mb-width
         margin-bottom: 11.2vmin
@@ -168,14 +200,16 @@ section
       &:nth-child(4)
         .icon
           img
-            transition-delay: .45s
+            transition-delay: .45s    
 
 .market-wrap
   +setImgBg('~@img/market_bg.jpg',null,null,cover,bottom center)
+  padding: 100px 120px 160px 0
   +mb-width
     text-align: center
   .marketItem-list
     +flex
+    position: relative
     width: 1540px
     margin: 0 auto
     +mb-width(1780px)
@@ -208,3 +242,27 @@ section
           right: 6%
           bottom: 10%
           font-size: 5.5vmin
+    @extend %redDotFloat
+    .redDot
+      &.top-dot
+        left: -3%
+        top: 5%
+        transform: scale(0.6)
+        +mb-width
+          left: -20%
+          top: 30%
+      &.left-dot
+        left: -3%
+        bottom: -10%
+        +mb-width
+          bottom: auto
+          top: 10%
+      &.right-dot
+        right: -4%
+        bottom: 32%
+      &.bottom-dot
+        right: 25%
+        bottom: -13%
+        transform: scale(0.6)
+        +mb-width
+          bottom: -2%
