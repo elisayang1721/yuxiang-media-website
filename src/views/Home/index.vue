@@ -164,18 +164,17 @@ export default {
 
         const val = this.easeInOutQuad(currentTime, start, change, duration)
 
+        // const supportPageOffset = window.pageXOffset !== undefined
+        // const isCSS1Compat = ((document.compatMode || '') === 'CSS1Compat')
 
-        const supportPageOffset = window.pageXOffset !== undefined
-        const isCSS1Compat = ((document.compatMode || '') === 'CSS1Compat')
+        // let y = ((supportPageOffset) ? window.pageYOffset : isCSS1Compat) ? document.documentElement.scrollTop : document.body.scrollTop
 
-        let y = ((supportPageOffset) ? window.pageYOffset : isCSS1Compat) ? document.documentElement.scrollTop : document.body.scrollTop
-        y = val
-        console.log(y)
+        // console.log(typeof y)
+        // y = val
 
         try {
-          // window.pageYOffset = y
-          document.documentElement.scrollTop = y
-          document.body.scrollTop = y
+          document.documentElement.scrollTop = val
+          document.body.scrollTop = val
         } catch {
           // console.log()
         }
