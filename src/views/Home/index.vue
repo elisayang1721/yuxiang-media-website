@@ -149,26 +149,41 @@ export default {
         }
       }
     },
-    goToBlock(tag) {
-      const blocksTag = this.$refs[tag]
+    scrollTop(tag, duration) {
+      const htmlElement = document.documentElement ? document.documentElement : document.body
       const headerHeight = document.querySelector('header').offsetHeight
-      const scrollHeight = blocksTag.offsetTop - headerHeight
+      const to = this.$refs[tag].offsetTop - headerHeight
 
-      window.scrollTo({ 'behavior': 'smooth', 'top': scrollHeight })
+      const start = htmlElement.scrollTop
+      const change = to - start
+      let currentTime = 0
+      const increment = 20
+
+      const animateScroll = () => {
+        currentTime += increment
+
+        const val = this.easeInOutQuad(currentTime, start, change, duration)
+        const element = document.documentElement ? document.documentElement : document.body
+        element.scrollTop = val
+        if (currentTime < duration) {
+          setTimeout(animateScroll, increment)
+        }
+      }
+      animateScroll()
+    },
+    easeInOutQuad(t, b, c, d) {
+      let tValue = t
+      tValue /= d / 2
+      if (t < 1) return (c / 2) * tValue * tValue + b
+      tValue--
+      return (-c / 2) * (tValue * (tValue - 2) - 1) + b
     }
   },
   mounted() {
     window.addEventListener('scroll', this.getScrollTop)
     this.$bus.$on('getBlocks', data => {
-      this.goToBlock(data.tag)
+      this.scrollTop(data.tag, 1000)
     })
-
-    // 確定所有資源載完
-    // document.onreadystatechange = () => {
-    //   if (document.readyState === 'complete') {
-    //     this.getScrollTop()
-    //   }
-    // }
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.getScrollTop)
