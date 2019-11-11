@@ -117,14 +117,12 @@ export default {
   },
   methods: {
     getScrollTop() {
-      // const htmlElement = document.documentElement ? document.documentElement : document.body
       const scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
       const headerHeight = document.querySelector('header').offsetHeight
       const blocks = document.querySelectorAll('section')
       const menu = document.getElementsByClassName('sideMenu')
       const menuLi = menu[0].getElementsByTagName('li')
 
-      console.log(scrollTop)
       for (let i = 0; i < blocks.length; i++) {
         const tops = blocks[i].offsetTop - headerHeight
         const blocksHeight = blocks[i].offsetHeight
@@ -152,11 +150,11 @@ export default {
       }
     },
     scrollTop(tag, duration) {
-      const htmlElement = document.documentElement ? document.documentElement : document.body
       const headerHeight = document.querySelector('header').offsetHeight
       const to = this.$refs[tag].offsetTop - headerHeight
 
-      const start = htmlElement.scrollTop
+      const start = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
+
       const change = to - start
       let currentTime = 0
       const increment = 20
@@ -165,8 +163,23 @@ export default {
         currentTime += increment
 
         const val = this.easeInOutQuad(currentTime, start, change, duration)
-        const element = document.documentElement ? document.documentElement : document.body
-        element.scrollTop = val
+
+
+        const supportPageOffset = window.pageXOffset !== undefined
+        const isCSS1Compat = ((document.compatMode || '') === 'CSS1Compat')
+
+        let y = ((supportPageOffset) ? window.pageYOffset : isCSS1Compat) ? document.documentElement.scrollTop : document.body.scrollTop
+        y = val
+        console.log(y)
+
+        try {
+          // window.pageYOffset = y
+          document.documentElement.scrollTop = y
+          document.body.scrollTop = y
+        } catch {
+          // console.log()
+        }
+
         if (currentTime < duration) {
           setTimeout(animateScroll, increment)
         }
