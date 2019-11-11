@@ -171,13 +171,16 @@ export default {
 
         // console.log(typeof y)
         // y = val
+        // eslint-disable-next-line no-unused-vars
+        const el = document.documentElement || document.body
+        el.scrollTop = val
 
-        try {
-          document.documentElement.scrollTop = val
-          document.body.scrollTop = val
-        } catch {
-          // console.log()
-        }
+        // try {
+        //   document.documentElement.scrollTop = val
+        //   document.body.scrollTop = val
+        // } catch {
+        //   // console.log()
+        // }
 
         if (currentTime < duration) {
           setTimeout(animateScroll, increment)
