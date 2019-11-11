@@ -118,7 +118,7 @@ export default {
   methods: {
     getScrollTop() {
       // const htmlElement = document.documentElement ? document.documentElement : document.body
-      const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+      const scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
       const headerHeight = document.querySelector('header').offsetHeight
       const blocks = document.querySelectorAll('section')
       const menu = document.getElementsByClassName('sideMenu')
@@ -135,7 +135,6 @@ export default {
 
           // 進入-- 認識昱翔
           if (i === 1) {
-            console.log('in 1')
             const moveIn = document.getElementsByClassName('article')
             moveIn[0].classList.add('moveIn')
           }
