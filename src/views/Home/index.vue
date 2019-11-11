@@ -117,7 +117,8 @@ export default {
   },
   methods: {
     getScrollTop() {
-      const scrollTop = document.documentElement.scrollTop
+      const htmlElement = document.documentElement ? document.documentElement : document.body
+      const scrollTop = htmlElement.scrollTop
       const headerHeight = document.querySelector('header').offsetHeight
       const blocks = document.querySelectorAll('section')
       const menu = document.getElementsByClassName('sideMenu')

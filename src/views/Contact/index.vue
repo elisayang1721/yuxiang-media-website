@@ -44,7 +44,8 @@ export default {
   name: 'Contact',
   methods: {
     getScrollTop() {
-      const scrollTop = document.documentElement.scrollTop
+      const htmlElement = document.documentElement ? document.documentElement : document.body
+      const scrollTop = htmlElement.scrollTop
       const headerHeight = document.querySelector('header').offsetHeight
       const blocks = document.getElementsByClassName('cHeading')
       const blocksTop = blocks[0].offsetTop - headerHeight
