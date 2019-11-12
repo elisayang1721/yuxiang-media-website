@@ -16,7 +16,7 @@
           :autoplayTimeout="5000")
           slide(v-for="(imgs,index) in idxBanners" :key="index")
             li
-              img(:src='require(`@img/banner/${imgs.pcImg}`)' @load="getScrollTop")
+              img(:src='require(`@img/banner/${imgs.pcImg}`)')
       ul.mb
         carousel(
           :perPage="1"
@@ -149,48 +149,13 @@ export default {
         }
       }
     },
-    scrollTop(tag, duration) {
+    scrollTop(tag) {
       const headerHeight = document.querySelector('header').offsetHeight
       const to = this.$refs[tag].offsetTop - headerHeight
 
-      const start = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
-
-      const change = to - start
-      let currentTime = 0
-      const increment = 20
-
-      const animateScroll = () => {
-        currentTime += increment
-
-        const val = this.easeInOutQuad(currentTime, start, change, duration)
-
-        // const supportPageOffset = window.pageXOffset !== undefined
-        // const isCSS1Compat = ((document.compatMode || '') === 'CSS1Compat')
-
-        // let y = ((supportPageOffset) ? window.pageYOffset : isCSS1Compat) ? document.documentElement.scrollTop : document.body.scrollTop
-
-        // console.log(typeof y)
-        // y = val
-
-        try {
-          document.documentElement.scrollTop = val
-          document.body.scrollTop = val
-        } catch {
-          // console.log()
-        }
-
-        if (currentTime < duration) {
-          setTimeout(animateScroll, increment)
-        }
-      }
-      animateScroll()
-    },
-    easeInOutQuad(t, b, c, d) {
-      let tValue = t
-      tValue /= d / 2
-      if (t < 1) return (c / 2) * tValue * tValue + b
-      tValue--
-      return (-c / 2) * (tValue * (tValue - 2) - 1) + b
+      $('body,html').stop().animate({
+        scrollTop: to
+      }, 600)
     }
   },
   mounted() {
@@ -198,6 +163,13 @@ export default {
     this.$bus.$on('getBlocks', data => {
       this.scrollTop(data.tag, 1000)
     })
+
+    // 頁面所有資料載完後
+    document.onreadystatechange = () => {
+      if (document.readyState === 'complete') {
+        this.getScrollTop()
+      }
+    }
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.getScrollTop)
