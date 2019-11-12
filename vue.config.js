@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const path = require('path')
 
 function resolve(dir) {
@@ -41,12 +42,18 @@ module.exports = {
         '@data': '@/assets/data',
         '@svg': '@/assets/svg'
       }
-    }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery'
+      })
+    ]
   },
   css: {
     loaderOptions: {
       sass: {
-        data: `@import "@css/mixins.sass";`
+        data: '@import "@css/mixins.sass";'
       }
     }
   }
