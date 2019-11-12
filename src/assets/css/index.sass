@@ -21,6 +21,7 @@
       display: none
     .mb
       display: block
+      height: 49vmin
 .themeTitle
   text-align: center
   margin-bottom: 65px
@@ -116,6 +117,8 @@ section
 
 .service-wrap
   padding: 100px 120px 70px 0
+  +mb-width
+    overflow: hidden
   .service-item
     width: 1370px
     margin: 0 auto
@@ -150,7 +153,7 @@ section
       right: 27%
       bottom: 0
       +mb-width
-        bottom: 2%
+        bottom: 4%
   .serviceItem-list
     +flex(space-around,flex-start)
     position: relative
