@@ -1,0 +1,71 @@
+//========== variable ==========
+$mainCrl: #ff3c00
+$secondCrl: #121212
+
+
+$phone-media: 996px
+$pc-media: 997px
+
+//========== mixin ==========
+=absPos($hrz:0, $vrt:0, $hAlign:left, $vAlign:top)
+  position: absolute	
+  @if $hAlign == right
+    right: $hrz
+  @else
+    left: $hrz
+  @if $vAlign == bottom
+    bottom: $vrt
+  @else
+    top: $vrt
+
+=setImgBg($file, $w:null, $h:null, $size:initial, $post:top center, $repeat:no-repeat, $color:null)
+  background-image: url($file)
+  background-repeat: $repeat
+  background-size: $size
+  background-position: $post
+  @if($color)
+    +setBg($color)
+  @if($w and $h)
+    +size($w, $h)
+    
+=setBg($color)
+  background-color: $color
+
+=size($w, $h:$w)
+  width: $w
+  height: $h
+
+=flex($hrz:space-between, $vrt:center)
+  display: flex
+  justify-content: $hrz
+  align-items: $vrt
+
+=font($size, $color, $weight: 500)
+  font-size: $size
+  color: $color
+  font-weight: $weight
+
+=mb-width($phone-media: 996px)
+  @media (max-width: $phone-media)
+    @content
+
+=pc-width()
+  @media (min-width: $pc-media)
+    @content
+
+//- extend
+%redDotFloat
+  .redDot
+    content: ''
+    position: absolute
+    +size(100px)
+    border-radius: 50%
+    background: linear-gradient(45deg, rgba(228,38,0,1) 0%,rgba(254,59,0,1) 100%)
+    background: linear-gradient(45deg, rgba(228,38,0,1) 40%,rgba(254,59,0,1) 100%)
+    box-shadow: 6px 8px 20px rgba(90, 90, 90, 0.75)
+    z-index: 10
+    +mb-width(1680px)
+      +size(5.95vw)
+    +mb-width
+      +size(8.5vmin)
+    

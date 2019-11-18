@@ -1,0 +1,192 @@
+.contant
+  .cBanner
+    +setImgBg('~@img/contact_banner.jpg',100%,27vw,cover)
+    +mb-width
+      padding: 0 !important
+      height: 42vmin
+    img
+      height: auto
+  .cHeading
+    +setImgBg('~@img/contact_title.jpg',100%,205px,cover)
+    +flex(center)
+    color: #fff
+    +mb-width
+      height: 20vmin
+    .cn
+      +font(74px,null,700)
+      margin-right: 100px
+      +mb-width(1400px)
+        font-size: 64px
+        margin-right: 80px
+      +mb-width
+        font-size: 6.4vmin
+        margin-right: 8vmin
+    .en
+      +font(50px,null)
+      font-family: 'Arial'
+      +mb-width(1400px)
+        font-size: 40px
+      +mb-width
+        font-size: 4vmin
+  .contactWay-wrap    
+    padding-top: 100px
+    padding-bottom: 100px
+    +mb-width(1680px)
+      padding-top: 4.76vw
+      padding-bottom: 4.76vw
+  .contact-list
+    width: 1470px
+    margin: 0 auto
+    +mb-width(1680px)
+      width: 90%      
+    li
+      +flex(flex-start)
+      padding: 70px 30px
+      width: 100%
+      +mb-width
+        display: inline-flex
+        flex-wrap: wrap
+        padding: 7vmin 3.5vmin
+      &+li
+        border-top: 1px solid $mainCrl
+      &.is-visible
+        .icon
+          img
+            top: 0 !important
+      +mb-width
+        .icon
+          img
+            top: 0 !important
+      .heading
+        width: 27%
+        +mb-width
+          width: 100%
+          >*
+            display: inline-block
+            vertical-align: middle
+        .cn
+          +font(74px,#000)
+          margin-bottom: 40px
+          +mb-width(1680px)
+            font-size: 4.16vw
+          +mb-width
+            font-size: 5.5vmin
+            margin-bottom: 0
+            margin-right: 3.5vmin
+        .en
+          +font(70px,$mainCrl)
+          +mb-width(1680px)
+            font-size: 3.9vw
+          +mb-width
+            font-size: 4.5vmin
+      .infoList
+        +flex(flex-start)
+        width: 73%
+        +mb-width
+          width: 100%
+          margin-top: 3.5vmin
+        .icon-box
+          +flex(center)
+          width: 25%
+          +mb-width
+            width: 20%
+        .icon
+          +size(160px)
+          position: relative
+          overflow: hidden          
+          +mb-width(1680px)
+            +size(9.52vw)
+          +mb-width
+            +size(14vmin)
+          img
+            +size(100%)
+            +absPos(0,100%)
+            transition: .3s
+        .getJob
+          +size(190px)          
+          +mb-width(1680px)
+            +size(11.52vw)
+          +mb-width
+            +size(17vmin)
+          img
+            transition-delay: .15s
+        .cMethod
+          width: 75%
+          +mb-width
+            width: 80%
+            padding-left: 4.5%
+          h1
+            +font(36px,$mainCrl,700)
+            width: 22%
+            +mb-width(1680px)
+              font-size: 2.2vw
+            +mb-width
+              width: 28%
+              font-size: 4vmin
+          .h2
+            +font(36px,#000)
+            text-decoration: none
+            +mb-width(1680px)
+              font-size: 2.2vw
+            +mb-width
+              font-size: 4vmin
+          div
+            &+div
+              margin-top: 30px
+              +mb-width
+                margin-top: 3vmin
+            >*
+              display: inline-block
+          .jobLink            
+            +font(46px,#fff)
+            +size(320px,96px)
+            position: relative
+            display: inline-block
+            letter-spacing: .1em
+            background: #000
+            margin-left: 50px
+            text-decoration: none
+            transition: .3s
+            overflow: hidden
+            +mb-width(1680px)
+              font-size: 2.45vw
+              +size(18.45vw,5.35vw)
+            +mb-width
+              font-size: 4.5vmin
+              +size(34.12vmin,10vmin)
+              margin-left: 8vmin
+            &::after
+              content: ''
+              +absPos(50%,50%)
+              +size(93%,77%)
+              border: 1px solid $mainCrl
+              transform: translate(-50%,-50%)
+            &::before
+              content: ''
+              +absPos(50%,50%)
+              +size(0,0)
+              border: 1px solid #fff
+              transform: translate(-50%,-50%)
+              z-index: 11
+              opacity: 0
+              transition: .3s
+            span
+              +absPos(50%,50%)
+              width: 100%
+              text-align: center
+              transform: translate(-50%,-50%)
+              z-index: 10
+            i
+              +absPos(-100%,0)
+              +size(100%)
+              background: linear-gradient(to bottom, rgba(255,96,0,1) 0%,rgba(255,1,0,1) 100%)
+              transition: .3s
+              z-index: 1              
+            +pc-width
+              &:hover
+                &::before
+                  +size(93%,77%)
+                  opacity: 1
+                i
+                  left: 0
+                
