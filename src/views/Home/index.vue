@@ -156,6 +156,9 @@ export default {
       $('body,html').stop().animate({
         scrollTop: to
       }, 600)
+    },
+    test() {
+      console.log('123')
     }
   },
   mounted() {
@@ -170,6 +173,7 @@ export default {
         this.getScrollTop()
       }
     }
+    this.test()
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.getScrollTop)
