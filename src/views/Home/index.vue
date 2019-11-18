@@ -156,6 +156,13 @@ export default {
       $('body,html').stop().animate({
         scrollTop: to
       }, 600)
+    },
+    removeBtnAttr() {
+      const btns = document.querySelectorAll('button')
+      console.log(btns, 'btns')
+      btns.forEach(item => {
+        item.removeAttribute('title')
+      })
     }
   },
   mounted() {
@@ -170,6 +177,9 @@ export default {
         this.getScrollTop()
       }
     }
+    this.$nextTick(() => {
+      this.removeBtnAttr()
+    })
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.getScrollTop)
