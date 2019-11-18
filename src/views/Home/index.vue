@@ -157,8 +157,12 @@ export default {
         scrollTop: to
       }, 600)
     },
-    test() {
-      console.log('123')
+    removeBtnAttr() {
+      const btns = document.querySelectorAll('button')
+      console.log(btns, 'btns')
+      btns.forEach(item => {
+        item.removeAttribute('title')
+      })
     }
   },
   mounted() {
@@ -173,7 +177,9 @@ export default {
         this.getScrollTop()
       }
     }
-    this.test()
+    this.$nextTick(() => {
+      this.removeBtnAttr()
+    })
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.getScrollTop)
