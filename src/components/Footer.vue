@@ -9,7 +9,7 @@
             @click="goBlocks(nav.id,index)")
             router-link(:to="nav.link")
               | {{nav.title}}
-      .copyright © 2019 Brilliant All Right Reserved
+      .copyright © 2019 Yu Xiang Multimedia Advertising Co.,Ltd All Right Reserved
 </template>
 <script>
 

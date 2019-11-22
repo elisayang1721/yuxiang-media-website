@@ -28,6 +28,8 @@
         font-size: 40px
       +mb-width
         font-size: 4vmin
+      +mb-width(700px)
+        line-height: 1.3
   .contactWay-wrap    
     padding-top: 100px
     padding-bottom: 100px
@@ -46,14 +48,14 @@
       +mb-width
         display: inline-flex
         flex-wrap: wrap
-        padding: 7vmin 3.5vmin
+        padding: 7vmin 2.5vmin
       &+li
         border-top: 1px solid $mainCrl
       &.is-visible
         .icon
           img
             top: 0 !important
-      +mb-width
+      +mb-width(1024px)
         .icon
           img
             top: 0 !important
@@ -85,6 +87,8 @@
         +mb-width
           width: 100%
           margin-top: 3.5vmin
+        +mb-width(700px)
+          margin-top: 20px
         .icon-box
           +flex(center)
           width: 25%
@@ -116,27 +120,39 @@
             width: 80%
             padding-left: 4.5%
           h1
-            +font(36px,$mainCrl,700)
+            +font(32px,$mainCrl,700)
             width: 22%
             +mb-width(1680px)
               font-size: 2.2vw
-            +mb-width
               width: 28%
+            +mb-width
+              min-width: 28%
+              width: auto
               font-size: 4vmin
-          .h2
-            +font(36px,#000)
+          .h2,p
+            +font(32px,#000)
             text-decoration: none
             +mb-width(1680px)
               font-size: 2.2vw
             +mb-width
               font-size: 4vmin
+              
           div
-            &+div
-              margin-top: 30px
-              +mb-width
-                margin-top: 3vmin
+            // &+div
+            //   margin-top: 30px
+            //   +mb-width
+            //     margin-top: 3vmin
+            display: flex
+            flex-wrap: wrap
             >*
-              display: inline-block
+              margin: 5px 0
+              // display: inline-block
+              line-height: 1.5
+              +mb-width
+                margin: 5px 0
+                line-height: 1.5
+              +mb-width(700px)
+                margin: 3px 0
           .jobLink            
             +font(46px,#fff)
             +size(320px,96px)
