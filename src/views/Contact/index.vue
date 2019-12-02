@@ -4,9 +4,9 @@
     section.cHeading
       .cn 聯絡我們
       .en
-        |GET IN TOUCH
+        | GET IN TOUCH
         br
-        |WITH US
+        | WITH US
     section.contactWay-wrap
       ul.contact-list
         li
@@ -19,11 +19,14 @@
                 img(src="@img/contact_01.png")
             .cMethod
               div
+                h1 EMAIL
+                a.h2(href="mailto:yuxianghr@gmail.com") yuxianghr@gmail.com
+              div
                 h1 PHONE
                 a.h2(href="tel:+886 4-2254-0759") +886 4-2254-0759
               div
-                h1 EMAIL
-                a.h2(href="mailto:yuxianghr@gmail.com") yuxianghr@gmail.com
+                h1 ADDRESS
+                p 臺中市西屯區市政北二路238號14樓之1
         li
           .heading
             .cn 人才專區
